@@ -1,0 +1,9 @@
+{
+  "total_generated": 2,
+  "successful": 2,
+  "failed": 0,
+  "total_tokens": 4536,
+  "total_time": 14.22140121459961,
+  "avg_steps_per_trajectory": 1.0,
+  "success_rate": 1.0
+}

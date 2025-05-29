@@ -9,7 +9,7 @@ project:
 # Model Configuration
 models:
   teacher:
-    name: "deepseek-chat"
+    name: "deepseek-r1-distill-llama-70b"
     provider: "groq"
     max_tokens: 2048
     temperature: 0.5
