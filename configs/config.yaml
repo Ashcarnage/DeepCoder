@@ -1,0 +1,248 @@
+# DeepCoder Configuration
+
+# Project Settings
+project:
+  name: "deepcoder-distillation"
+  version: "1.0.0"
+  description: "Agent reasoning distillation from DeepSeek R1 to Qwen 3B"
+
+# Model Configuration
+models:
+  teacher:
+    name: "deepseek-chat"
+    provider: "groq"
+    max_tokens: 2048
+    temperature: 0.5
+    
+  student:
+    name: "Qwen/Qwen2.5-3B-Instruct"
+    max_seq_length: 4096
+    dtype: "bfloat16"
+    load_in_4bit: true
+    
+  # LoRA Configuration
+  lora:
+    r: 16
+    alpha: 16
+    dropout: 0.0
+    target_modules: ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+    bias: "none"
+
+# Training Configuration
+training:
+  # Basic Training Parameters
+  batch_size: 2
+  gradient_accumulation_steps: 4
+  learning_rate: 2e-4
+  weight_decay: 0.01
+  warmup_steps: 10
+  num_epochs: 3
+  max_steps: -1
+  
+  # Scheduler and Optimizer
+  lr_scheduler_type: "linear"
+  optim: "adamw_8bit"
+  
+  # Mixed Precision
+  fp16: false
+  bf16: true
+  
+  # Gradient and Memory Management
+  gradient_checkpointing: true
+  dataloader_pin_memory: true
+  dataloader_num_workers: 0
+  
+  # Logging and Saving
+  logging_steps: 1
+  save_steps: 100
+  eval_steps: 100
+  save_total_limit: 3
+  
+  # Early Stopping
+  early_stopping_patience: 3
+  early_stopping_threshold: 0.01
+
+# SAD Loss Configuration
+sad_loss:
+  lambda_reason: 1.0
+  lambda_action: 1.0
+  normalize_by_tokens: true
+  fallback_to_standard: true
+
+# Data Configuration
+data:
+  # Generation Parameters
+  num_trajectories: 1000
+  max_steps_per_trajectory: 10
+  min_trajectory_length: 3
+  
+  # Data Splits
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  
+  # Processing
+  shuffle_seed: 42
+  max_workers: 4
+  
+  # Quality Filters
+  min_success_rate: 0.7
+  require_tool_usage: true
+  filter_incomplete: true
+
+# Agent Configuration
+agent:
+  # System Prompt
+  system_prompt: |
+    You are an advanced AI assistant designed to solve complex coding and reasoning problems.
+    You must operate in a strict cycle of Thought, Action, and Observation.
+    
+    1. **Thought:** Articulate your reasoning for the current step. Analyze the problem and decide on the next action.
+    2. **Action:** Choose ONE of the following actions:
+       - `execute_python(code_string)`: Execute Python code
+       - `retrieve_knowledge(query_string)`: Search for information
+       - `finish(final_answer_string)`: Provide the final answer
+    3. **Observation:** Use the result of your action to inform your next thought.
+    
+    Continue this cycle until you solve the problem and use the `finish` action.
+  
+  # Tools Configuration
+  tools:
+    python_executor:
+      enabled: true
+      timeout: 30
+      memory_limit: "512MB"
+      allowed_imports: ["math", "statistics", "random", "json", "re", "datetime"]
+      
+    knowledge_retriever:
+      enabled: true
+      mock_mode: true
+      timeout: 10
+      
+    # Tool parsing patterns
+    patterns:
+      python_exec: 'execute_python\((.*?)\)'
+      knowledge_retrieval: 'retrieve_knowledge\((.*?)\)'
+      finish: 'finish\((.*?)\)'
+
+# Evaluation Configuration
+evaluation:
+  # Benchmarks
+  benchmarks:
+    - name: "humaneval"
+      enabled: true
+      pass_at_k: [1, 5, 10]
+      
+    - name: "mbpp"
+      enabled: true
+      pass_at_k: [1, 5, 10]
+      
+    - name: "custom_agent_tasks"
+      enabled: true
+      num_samples: 100
+  
+  # Metrics
+  metrics:
+    - "pass_rate"
+    - "tool_usage_accuracy"
+    - "reasoning_quality"
+    - "response_coherence"
+    - "inference_speed"
+    
+  # Comparison
+  compare_with_teacher: true
+  compare_with_baseline: true
+
+# API Configuration
+api:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 1
+  max_concurrent_requests: 10
+  timeout: 120
+  
+  # Security
+  rate_limit: "10/minute"
+  require_auth: false
+  cors_enabled: true
+  
+  # Response Configuration
+  max_response_tokens: 2048
+  stream_responses: false
+  include_reasoning_trace: true
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  # File Logging
+  file_logging: true
+  log_file: "logs/deepcoder.log"
+  max_file_size: "10MB"
+  backup_count: 5
+  
+  # Console Logging
+  console_logging: true
+  rich_formatting: true
+
+# Monitoring Configuration
+monitoring:
+  wandb:
+    enabled: true
+    project: "deepcoder-distillation"
+    tags: ["distillation", "agent", "qwen", "deepseek"]
+    
+  tensorboard:
+    enabled: true
+    log_dir: "logs/tensorboard"
+    
+  # Metrics to Track
+  track_metrics:
+    - "loss/total"
+    - "loss/reason"
+    - "loss/action"
+    - "learning_rate"
+    - "gpu_memory"
+    - "tokens_per_second"
+
+# Paths Configuration
+paths:
+  data_dir: "./data"
+  models_dir: "./models"
+  logs_dir: "./logs"
+  checkpoints_dir: "./checkpoints"
+  cache_dir: "./cache"
+  
+  # Data Files
+  trajectories_file: "data/trajectories.jsonl"
+  processed_data_file: "data/processed_trajectories.jsonl"
+  train_data_file: "data/train_data.jsonl"
+  val_data_file: "data/val_data.jsonl"
+  
+  # Model Files
+  student_model_path: "models/student_model"
+  final_model_path: "models/final_model"
+
+# Hardware Configuration
+hardware:
+  device: "auto"  # auto, cuda, cpu
+  gpu_memory_fraction: 0.9
+  mixed_precision: "bf16"
+  compile_model: false
+  
+  # Distributed Training
+  distributed: false
+  world_size: 1
+  local_rank: 0
+
+# Debugging and Development
+debug:
+  enabled: false
+  log_model_outputs: false
+  save_failed_trajectories: true
+  detailed_error_logging: true
+  
+  # Data Debugging
+  max_debug_samples: 10
+  validate_data_every_n_steps: 100 
