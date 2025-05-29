@@ -15,10 +15,12 @@ models:
     temperature: 0.5
     
   student:
-    name: "Qwen/Qwen2.5-3B-Instruct"
-    max_seq_length: 4096
+    name: "Qwen/Qwen3-30B-A3B"
+    provider: "sglang"
+    model_path: "/workspace/persistent/models/qwen3-30b-a3b"
+    max_seq_length: 32768
     dtype: "bfloat16"
-    load_in_4bit: true
+    enable_thinking: true
     
   # LoRA Configuration
   lora:
@@ -27,6 +29,56 @@ models:
     dropout: 0.0
     target_modules: ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
     bias: "none"
+
+# SGLang Server Configuration
+sglang:
+  server:
+    host: "127.0.0.1"
+    port: 30000
+    model_path: "/workspace/persistent/models/qwen3-30b-a3b"
+    
+    # MOE Optimization Settings
+    tp_size: 1
+    dp_size: 1
+    max_running_requests: 2048
+    max_total_tokens: 65536
+    max_prefill_tokens: 32768
+    context_length: 32768
+    
+    # Performance Settings
+    mem_fraction_static: 0.85
+    chunked_prefill_size: 8192
+    enable_flashinfer: true
+    disable_regex_jump_forward: false
+    
+    # Qwen3 Specific Settings
+    reasoning_parser: "qwen3"
+    trust_remote_code: true
+    tensor_parallel_size: 1
+    
+    # Server Settings
+    served_model_name: "qwen3-30b-a3b"
+    chat_template: null
+    tokenizer_mode: "auto"
+    disable_custom_all_reduce: false
+    
+  client:
+    api_key: "EMPTY"
+    base_url: "http://127.0.0.1:30000/v1"
+    timeout: 120
+    max_retries: 3
+    
+    # Generation Parameters
+    temperature: 0.6
+    top_p: 0.95
+    top_k: 20
+    min_p: 0.0
+    presence_penalty: 0.0
+    max_tokens: 32768
+    
+    # Thinking Mode Configuration
+    enable_thinking: true
+    thinking_timeout: 300
 
 # Training Configuration
 training:
@@ -61,13 +113,159 @@ training:
   # Early Stopping
   early_stopping_patience: 3
   early_stopping_threshold: 0.01
+  
+  # Phase 2.3 - SAD Training Configuration
+  model_path: "/workspace/persistent/models/qwen3-30b-a3b"
+  data_dir: "data/processed_trajectories"
+  output_dir: "models/sad_trained"
+  
+  # SGLang Server Configuration
+  sglang_port: 30000
+  sglang_host: "127.0.0.1"
+  max_seq_length: 32768
+  
+  # Optimization Settings
+  use_mixed_precision: true
+  gradient_clip_value: 1.0
+  optimizer_type: "adamw"
+  lr_scheduler_type: "linear"
+  
+  # LoRA Configuration (for efficient fine-tuning)
+  use_lora: true
+  lora_r: 16
+  lora_alpha: 16
+  lora_dropout: 0.0
+  lora_target_modules: ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+  
+  # SAD Loss Configuration
+  sad_loss_config_type: "production"  # production, research, fast
+  sad_loss_weight: 1.0
+  auxiliary_loss_weight: 0.1
+  
+  # Evaluation
+  eval_batch_size: 1
+  eval_on_start: true
+  
+  # Wandb Integration
+  use_wandb: true
+  wandb_project: "deepcoder-sad-training"
+  wandb_name: null
+  
+  # Hardware Settings
+  device: "auto"
+  dataloader_num_workers: 4
+  pin_memory: true
+  
+  # Checkpointing
+  resume_from_checkpoint: null
+  save_safetensors: true
 
-# SAD Loss Configuration
+# SAD Loss Configuration (Phase 2.2)
 sad_loss:
-  lambda_reason: 1.0
-  lambda_action: 1.0
-  normalize_by_tokens: true
-  fallback_to_standard: true
+  # Core loss parameters
+  loss_type: "adaptive_kl"  # standard_kl, wasserstein, focal_kl, adaptive_kl, symmetric_kl, alpha_divergence
+  weighting_strategy: "adaptive"  # uniform, reasoning_heavy, action_heavy, adaptive, curriculum, confidence_based, difficulty_aware
+  temperature: 3.0
+  min_temperature: 1.0
+  max_temperature: 10.0
+  
+  # Span-specific weights
+  reasoning_weight: 2.0
+  action_weight: 1.5
+  observation_weight: 1.0
+  other_weight: 0.8
+  
+  # Advanced loss parameters
+  alpha_divergence_alpha: 1.5  # For alpha divergence
+  focal_gamma: 2.0  # For focal loss
+  label_smoothing: 0.1
+  gradient_clip_value: 5.0
+  
+  # Optimization features
+  use_mixed_precision: true
+  use_gradient_accumulation: true
+  accumulation_steps: 4
+  use_span_balancing: true
+  
+  # Regularization
+  entropy_regularization: 0.01
+  confidence_penalty: 0.05
+  span_consistency_weight: 0.1
+  
+  # Adaptive features
+  adaptive_temperature: true
+  adaptive_weights: true
+  curriculum_learning: true
+  difficulty_estimation: true
+  
+  # Numerical stability
+  epsilon: 1e-8
+  max_logit_value: 50.0
+  numerical_stability: true
+  
+  # Performance monitoring
+  compute_span_metrics: true
+  track_convergence: true
+  log_detailed_metrics: false
+  
+  # Training configurations
+  production:
+    loss_type: "adaptive_kl"
+    weighting_strategy: "adaptive"
+    use_mixed_precision: true
+    numerical_stability: true
+    gradient_clip_value: 1.0
+    temperature: 2.0
+    reasoning_weight: 2.5
+    action_weight: 1.8
+    compute_span_metrics: true
+    log_detailed_metrics: false
+  
+  research:
+    loss_type: "wasserstein"
+    weighting_strategy: "curriculum"
+    compute_span_metrics: true
+    log_detailed_metrics: true
+    track_convergence: true
+    curriculum_learning: true
+    adaptive_temperature: true
+    difficulty_estimation: true
+    entropy_regularization: 0.02
+    span_consistency_weight: 0.15
+  
+  fast:
+    loss_type: "standard_kl"
+    weighting_strategy: "uniform"
+    use_mixed_precision: true
+    compute_span_metrics: false
+    log_detailed_metrics: false
+    numerical_stability: false
+    adaptive_temperature: false
+    adaptive_weights: false
+    curriculum_learning: false
+    
+# Integration settings
+integration:
+  # Trajectory processing integration
+  trajectory_sad_integration:
+    enabled: true
+    auto_span_detection: true
+    quality_filtering: true
+    batch_processing: true
+    
+  # SGLang integration  
+  sglang_integration:
+    enabled: true
+    use_thinking_mode: true
+    custom_tokens: ["<think>", "</think>", "<action>", "</action>", "<observe>", "</observe>"]
+    span_markers: true
+    
+  # MOE architecture support
+  moe_support:
+    enabled: true
+    expert_routing: "span_aware"
+    load_balancing: true
+    expert_span_specialization: true
 
 # Data Configuration
 data:
@@ -245,4 +443,119 @@ debug:
   
   # Data Debugging
   max_debug_samples: 10
-  validate_data_every_n_steps: 100 
+  validate_data_every_n_steps: 100
+
+# Trajectory Processing Configuration (Phase 2.1)
+trajectory_processing:
+  # Model and Tokenization Settings
+  model_name: "Qwen/Qwen3-30B-A3B"
+  max_length: 32768
+  context_length: 32768
+  padding: "max_length"
+  truncation: true
+  
+  # Output Configuration
+  output_dir: "data/processed_trajectories"
+  batch_size: 16
+  max_workers: 4
+  
+  # Span Detection Patterns for SAD
+  span_detection:
+    # Reasoning/Thinking Patterns
+    thinking_patterns:
+      - '<think>(.*?)</think>'
+      - '<thinking>(.*?)</thinking>'
+      - 'Let me think(.*?)(?=\n\n|\n[A-Z]|$)'
+      - 'I need to(.*?)(?=\n\n|\n[A-Z]|$)'
+      - 'First, I(.*?)(?=\n\n|\n[A-Z]|$)'
+      - 'To solve this(.*?)(?=\n\n|\n[A-Z]|$)'
+      - 'My approach(.*?)(?=\n\n|\n[A-Z]|$)'
+      - 'Thought:(.*?)(?=\n\n|Action:|Observation:|$)'
+    
+    # Action Patterns
+    action_patterns:
+      - 'execute_python\((.*?)\)'
+      - '```python(.*?)```'
+      - '```(.*?)```'
+      - 'Action:(.*?)(?=\n\n|Observation:|$)'
+      - 'I will(.*?)(?=\n\n|\n[A-Z]|$)'
+      - 'Let me(.*?)(?=\n\n|\n[A-Z]|$)'
+      - 'finish\((.*?)\)'
+      - 'retrieve_knowledge\((.*?)\)'
+    
+    # Observation Patterns
+    observation_patterns:
+      - 'Observation:(.*?)(?=\n\n|Thought:|Action:|$)'
+      - 'Result:(.*?)(?=\n\n|\n[A-Z]|$)'
+      - 'Output:(.*?)(?=\n\n|\n[A-Z]|$)'
+      - 'Error:(.*?)(?=\n\n|\n[A-Z]|$)'
+  
+  # Span Processing Settings
+  span_processing:
+    enable_span_overlap: true
+    confidence_threshold: 0.7
+    max_span_length: 1024
+    fill_gaps: true
+    merge_adjacent: false
+  
+  # Quality Filtering Thresholds
+  quality_filtering:
+    min_reasoning_ratio: 0.10    # At least 10% reasoning tokens
+    min_action_ratio: 0.05       # At least 5% action tokens  
+    max_other_ratio: 0.80        # At most 80% unclassified tokens
+    min_trajectory_length: 100   # Minimum tokens per trajectory
+    max_trajectory_length: 30000 # Maximum tokens per trajectory
+    min_spans: 2                 # Minimum number of spans
+    min_quality_score: 0.3       # Minimum overall quality score
+  
+  # Token Alignment Settings
+  token_alignment:
+    use_fast_tokenizer: true
+    add_special_tokens: true
+    preserve_whitespace: false
+    handle_unk_tokens: true
+    alignment_strategy: "prefix_match"  # prefix_match, sliding_window, exact
+  
+  # Performance Settings
+  performance:
+    cache_tokenizer: true
+    precompute_spans: true
+    parallel_processing: true
+    chunk_size: 1000
+    memory_limit_gb: 8
+  
+  # Validation Settings
+  validation:
+    enable_format_check: true
+    enable_quality_check: true
+    sample_validation_ratio: 0.1
+    log_validation_errors: true
+    
+  # Debug and Logging
+  debug:
+    log_span_detection: false
+    log_token_alignment: false
+    save_intermediate_results: false
+    verbose_processing: false
+
+# Data Generation Configuration (Updated for SAD)
+data_generation:
+  # Trajectory Generation
+  num_trajectories: 1000
+  max_steps_per_trajectory: 10
+  batch_size: 10
+  max_workers: 4
+  output_dir: "data/trajectories"
+  problems_file: "data/problems/coding_problems.jsonl"
+  save_interval: 50
+  
+  # Generation Parameters
+  temperature: 0.7
+  max_tokens: 4096
+  include_failed: true
+  min_success_rate: 0.7
+  
+  # Processing Pipeline
+  enable_trajectory_processing: true
+  process_on_generation: true
+  immediate_sad_conversion: true 
