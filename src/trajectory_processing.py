@@ -62,6 +62,18 @@ class TokenSpan:
             'confidence': self.confidence,
             'metadata': self.metadata
         }
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> 'TokenSpan':
+        """Create TokenSpan from dictionary"""
+        return cls(
+            span_type=SpanType(data['span_type']),
+            start_token=data['start_token'],
+            end_token=data['end_token'],
+            text=data['text'],
+            confidence=data.get('confidence', 1.0),
+            metadata=data.get('metadata', {})
+        )
 
 
 @dataclass
@@ -90,6 +102,21 @@ class ProcessedTrajectory:
             'original_text': self.original_text,
             'metadata': self.metadata
         }
+    
+    @classmethod
+    def from_dict(cls, data: Dict[str, Any]) -> 'ProcessedTrajectory':
+        """Create ProcessedTrajectory from dictionary"""
+        spans = [TokenSpan.from_dict(span_data) for span_data in data['spans']]
+        return cls(
+            trajectory_id=data['trajectory_id'],
+            input_ids=data['input_ids'],
+            attention_mask=data['attention_mask'],
+            reasoning_mask=data['reasoning_mask'],
+            action_mask=data['action_mask'],
+            spans=spans,
+            original_text=data['original_text'],
+            metadata=data.get('metadata', {})
+        )
 
 
 @dataclass

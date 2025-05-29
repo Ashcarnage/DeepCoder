@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.distributed as dist
-from torch.cuda.amp import autocast
+from torch.amp import autocast
 from typing import Dict, List, Optional, Tuple, Union, Callable
 import numpy as np
 import math
@@ -470,7 +470,8 @@ class SADLoss(nn.Module):
         batch_losses = []
         span_metrics = []
         
-        with autocast(enabled=self.config.use_mixed_precision):
+        # Apply mixed precision if enabled
+        with autocast(device_type='cuda' if teacher_logits.is_cuda else 'cpu', enabled=self.config.use_mixed_precision):
             for batch_idx in range(batch_size):
                 # Get sequence-specific data
                 seq_teacher_logits = teacher_logits[batch_idx]  # [seq_len, vocab_size]
@@ -577,7 +578,8 @@ class SADLoss(nn.Module):
         # Entropy regularization
         if self.config.entropy_regularization > 0:
             student_probs = F.softmax(student_logits, dim=-1)
-            entropy = -torch.sum(student_probs * torch.log(student_probs + self._epsilon), dim=-1)
+            epsilon = self._epsilon.to(student_probs.device)
+            entropy = -torch.sum(student_probs * torch.log(student_probs + epsilon), dim=-1)
             # Use negative entropy as regularization (encourage higher entropy)
             aux_losses['entropy_reg'] = self.config.entropy_regularization * entropy.mean()
         
@@ -595,6 +597,8 @@ class SADLoss(nn.Module):
         
         # Target token supervision if available
         if target_tokens is not None:
+            # Ensure target_tokens is on the same device as student_logits
+            target_tokens = target_tokens.to(student_logits.device)
             ce_loss = F.cross_entropy(
                 student_logits.view(-1, student_logits.size(-1)),
                 target_tokens.view(-1),
@@ -633,9 +637,10 @@ class SADLoss(nn.Module):
                     count = 0
                     for i in range(len(span_probs)):
                         for j in range(i + 1, len(span_probs)):
-                            kl_ij = F.kl_div(torch.log(span_probs[i] + self._epsilon), 
+                            epsilon = self._epsilon.to(span_probs[i].device)
+                            kl_ij = F.kl_div(torch.log(span_probs[i] + epsilon), 
                                            span_probs[j], reduction='sum')
-                            kl_ji = F.kl_div(torch.log(span_probs[j] + self._epsilon), 
+                            kl_ji = F.kl_div(torch.log(span_probs[j] + epsilon), 
                                            span_probs[i], reduction='sum')
                             consistency_loss += 0.5 * (kl_ij + kl_ji)
                             count += 1
@@ -689,7 +694,8 @@ class SADLoss(nn.Module):
                     
                     # Compute entropy
                     student_probs = F.softmax(span_student, dim=-1)
-                    entropy = -torch.sum(student_probs * torch.log(student_probs + self._epsilon), dim=-1).mean()
+                    epsilon = self._epsilon.to(student_probs.device)
+                    entropy = -torch.sum(student_probs * torch.log(student_probs + epsilon), dim=-1).mean()
                     
                     metrics[f'{span_type.value}_kl'] = kl_div.item()
                     metrics[f'{span_type.value}_accuracy'] = accuracy.item()

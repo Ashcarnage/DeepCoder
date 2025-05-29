@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader, Dataset
-from torch.cuda.amp import GradScaler, autocast
+from torch.amp import GradScaler, autocast
 import numpy as np
 import json
 import logging
@@ -253,7 +253,7 @@ class SADTrainer:
         
         # Mixed precision
         if self.config.use_mixed_precision:
-            self.scaler = GradScaler()
+            self.scaler = GradScaler('cuda')
         
         logger.info(f"Initialized SADTrainer with device: {self.device}")
     
@@ -312,14 +312,13 @@ class SADTrainer:
         # Configure student model to connect to SGLang server
         student_config = StudentModelConfig(
             model_name="qwen3-30b-a3b",
-            api_base=f"http://{self.config.sglang_host}:{self.config.sglang_port}/v1",
-            api_key="EMPTY",
+            served_model_name="qwen3-30b-a3b",
             max_tokens=self.config.max_seq_length,
             temperature=0.6,
-            use_thinking_mode=True
+            enable_thinking=True
         )
         
-        self.student_model = StudentModel(student_config)
+        self.student_model = StudentModel()
     
     def _setup_sad_loss(self):
         """Setup SAD loss function"""
@@ -349,7 +348,19 @@ class SADTrainer:
         if config_path.exists():
             with open(config_path, 'r') as f:
                 full_config = yaml.safe_load(f)
-                trajectory_config = TrajectoryProcessingConfig(**full_config.get('trajectory_processing', {}))
+                trajectory_config_dict = full_config.get('trajectory_processing', {})
+                
+                # Filter out parameters that TrajectoryProcessingConfig doesn't accept
+                valid_params = {}
+                import inspect
+                valid_param_names = set(inspect.signature(TrajectoryProcessingConfig.__init__).parameters.keys())
+                valid_param_names.discard('self')  # Remove 'self' parameter
+                
+                for key, value in trajectory_config_dict.items():
+                    if key in valid_param_names:
+                        valid_params[key] = value
+                
+                trajectory_config = TrajectoryProcessingConfig(**valid_params)
         else:
             trajectory_config = TrajectoryProcessingConfig()
         
@@ -445,7 +456,7 @@ class SADTrainer:
         teacher_logits = student_logits + 0.1 * torch.randn_like(student_logits)
         
         # Compute SAD loss
-        with autocast(enabled=self.config.use_mixed_precision):
+        with autocast(device_type=self.device.type, enabled=self.config.use_mixed_precision):
             loss_outputs = {}
             total_loss = 0
             

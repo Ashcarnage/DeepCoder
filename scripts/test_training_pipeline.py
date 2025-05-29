@@ -292,7 +292,7 @@ class TestSADTrainer(unittest.TestCase):
         self.assertTrue(checkpoint_path.exists())
         
         # Load and verify checkpoint
-        checkpoint = torch.load(checkpoint_path, map_location='cpu')
+        checkpoint = torch.load(checkpoint_path, map_location='cpu', weights_only=False)
         self.assertIn('epoch', checkpoint)
         self.assertIn('global_step', checkpoint)
         self.assertIn('sad_loss_state_dict', checkpoint)
