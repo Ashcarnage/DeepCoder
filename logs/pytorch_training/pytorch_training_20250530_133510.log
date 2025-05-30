@@ -1,0 +1,9 @@
+2025-05-30 13:35:10,722 - AgenticTrainer - INFO - Training log: logs/pytorch_training/pytorch_training_20250530_133510.log
+2025-05-30 13:35:10,752 - AgenticTrainer - INFO - Loading model: Qwen/Qwen2.5-3B-Instruct
+2025-05-30 13:35:35,565 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-05-30 13:35:55,207 - AgenticTrainer - INFO - Model loaded with LoRA configuration
+2025-05-30 13:35:55,219 - AgenticTrainer - INFO - Training samples: 45
+2025-05-30 13:35:55,219 - AgenticTrainer - INFO - Validation samples: 5
+2025-05-30 13:35:55,223 - AgenticTrainer - INFO - Optimizer setup with lr=0.0001
+2025-05-30 13:35:55,224 - AgenticTrainer - INFO - 🚀 Starting PyTorch Agentic Training with LoRA and SAD!
+2025-05-30 13:35:55,224 - AgenticTrainer - INFO - ============================================================

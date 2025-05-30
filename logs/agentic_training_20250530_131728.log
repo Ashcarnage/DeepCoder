@@ -1,0 +1,4 @@
+2025-05-30 13:17:28,314 - main - INFO - Log file: logs/agentic_training_20250530_131728.log
+2025-05-30 13:17:28,321 - agentic_trainer - INFO - 🔍 Checking API availability...
+2025-05-30 13:17:28,411 - agentic_trainer - ERROR -    ❌ Teacher API error: 401
+2025-05-30 13:17:28,412 - main - ERROR - ❌ API checks failed

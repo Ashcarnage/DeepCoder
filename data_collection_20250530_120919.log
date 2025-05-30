@@ -1,0 +1,14 @@
+2025-05-30 12:09:19,458 - collector.orchestrator - INFO - Starting data collection pipeline with sources: ['synthetic']
+2025-05-30 12:09:19,459 - collector.orchestrator - INFO - Configuration: CollectionConfig(output_dir='data/collected', max_concurrent_requests=10, rate_limit_per_second=2.0, retry_attempts=3, retry_delay=1.0, timeout_seconds=30, checkpoint_interval=100, quality_threshold=0.5, enable_deduplication=True, log_level='INFO')
+2025-05-30 12:09:19,460 - collector.orchestrator - INFO - Running 1 collection tasks...
+2025-05-30 12:09:19,460 - collector.orchestrator - INFO - Starting synthetic data collection...
+2025-05-30 12:09:19,465 - collector.orchestrator - INFO - Using Groq API for synthetic generation
+2025-05-30 12:09:19,465 - collector.orchestrator - INFO - Synthetic config: provider=groq, model=llama3-8b-8192, scenarios=4
+2025-05-30 12:09:19,470 - root - INFO - Loaded checkpoint: 50 processed items
+2025-05-30 12:09:19,473 - root - INFO - Loaded 12 content hashes
+2025-05-30 12:09:19,474 - collector.synthetic - INFO - Starting collection for synthetic
+2025-05-30 12:09:19,474 - collector.synthetic - INFO - Generated 96 synthetic scenario IDs
+2025-05-30 12:09:19,496 - collector.synthetic - INFO - Collection complete: 0 items collected
+2025-05-30 12:09:19,525 - collector.orchestrator - INFO - Synthetic collection completed: 12 items
+2025-05-30 12:09:19,525 - collector.orchestrator - INFO - Completed collection for synthetic
+2025-05-30 12:09:19,535 - collector.orchestrator - INFO - Collection results saved to: data/collected/collection_results_20250530_120919.json

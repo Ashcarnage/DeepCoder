@@ -1,0 +1,33 @@
+2025-05-30 13:11:46,443 - agentic_consolidator - INFO - Starting agentic data consolidation
+2025-05-30 13:11:46,444 - agentic_consolidator - WARNING - Synthetic data directory not found: data/conversations/synthetic
+2025-05-30 13:11:46,454 - agentic_consolidator - INFO - Loaded 15 GitHub conversations
+2025-05-30 13:11:46,470 - agentic_consolidator - INFO - Loaded 0 sample conversations
+2025-05-30 13:11:46,472 - agentic_consolidator - WARNING - Coding problems directory not found: data/coding_problems
+2025-05-30 13:11:46,473 - agentic_consolidator - INFO - Loaded 15 conversations from all sources
+2025-05-30 13:11:46,473 - agentic_consolidator - INFO - Quality filtering: 15 -> 15 conversations
+2025-05-30 13:11:46,477 - agentic_consolidator - INFO - Deduplication: 15 -> 15 conversations
+2025-05-30 13:11:46,478 - agentic_consolidator - INFO - Created splits - Train: 12, Val: 1, Test: 2
+2025-05-30 13:11:46,521 - agentic_consolidator - INFO - Saved datasets to data/training_data
+2025-05-30 13:11:46,521 - agentic_consolidator - INFO - Agentic data consolidation complete
+2025-05-30 13:12:16,458 - agentic_consolidator - INFO - Starting agentic data consolidation
+2025-05-30 13:12:16,467 - agentic_consolidator - INFO - Loaded 27 synthetic conversations
+2025-05-30 13:12:16,472 - agentic_consolidator - INFO - Loaded 15 GitHub conversations
+2025-05-30 13:12:16,477 - agentic_consolidator - INFO - Loaded 0 sample conversations
+2025-05-30 13:12:16,478 - agentic_consolidator - WARNING - Coding problems directory not found: data/coding_problems
+2025-05-30 13:12:16,478 - agentic_consolidator - INFO - Loaded 42 conversations from all sources
+2025-05-30 13:12:16,478 - agentic_consolidator - INFO - Quality filtering: 42 -> 42 conversations
+2025-05-30 13:12:16,481 - agentic_consolidator - INFO - Deduplication: 42 -> 42 conversations
+2025-05-30 13:12:16,482 - agentic_consolidator - INFO - Created splits - Train: 33, Val: 4, Test: 5
+2025-05-30 13:12:16,537 - agentic_consolidator - INFO - Saved datasets to data/training_data
+2025-05-30 13:12:16,537 - agentic_consolidator - INFO - Agentic data consolidation complete
+2025-05-30 13:13:03,328 - agentic_consolidator - INFO - Starting agentic data consolidation
+2025-05-30 13:13:03,333 - agentic_consolidator - INFO - Loaded 27 synthetic conversations
+2025-05-30 13:13:03,338 - agentic_consolidator - INFO - Loaded 15 GitHub conversations
+2025-05-30 13:13:03,353 - agentic_consolidator - INFO - Loaded 20 sample conversations
+2025-05-30 13:13:03,354 - agentic_consolidator - WARNING - Coding problems directory not found: data/coding_problems
+2025-05-30 13:13:03,355 - agentic_consolidator - INFO - Loaded 62 conversations from all sources
+2025-05-30 13:13:03,355 - agentic_consolidator - INFO - Quality filtering: 62 -> 57 conversations
+2025-05-30 13:13:03,359 - agentic_consolidator - INFO - Deduplication: 57 -> 57 conversations
+2025-05-30 13:13:03,359 - agentic_consolidator - INFO - Created splits - Train: 45, Val: 5, Test: 7
+2025-05-30 13:13:03,425 - agentic_consolidator - INFO - Saved datasets to data/training_data
+2025-05-30 13:13:03,426 - agentic_consolidator - INFO - Agentic data consolidation complete

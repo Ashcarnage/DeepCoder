@@ -1,0 +1,3 @@
+2025-05-29 23:24:14,410 - collector.orchestrator - INFO - Starting data collection pipeline with sources: ['huggingface']
+2025-05-29 23:24:14,410 - collector.orchestrator - INFO - Configuration: CollectionConfig(output_dir='data/collected', max_concurrent_requests=10, rate_limit_per_second=2.0, retry_attempts=3, retry_delay=1.0, timeout_seconds=30, checkpoint_interval=100, quality_threshold=0.5, enable_deduplication=True, log_level='INFO')
+2025-05-29 23:24:14,410 - collector.orchestrator - INFO - DRY RUN MODE - No data will be collected

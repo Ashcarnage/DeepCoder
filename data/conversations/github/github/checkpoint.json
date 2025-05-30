@@ -1,0 +1,18 @@
+{
+  "metrics": {
+    "total_requested": 50,
+    "total_collected": 3,
+    "total_filtered": 0,
+    "total_duplicates": 2,
+    "total_errors": 45,
+    "start_time": "2025-05-30T12:17:47.793528",
+    "last_checkpoint": "2025-05-30T12:19:39.847698"
+  },
+  "processed_ids": [
+    "search_issues|5|API integration step by step",
+    "search_issues|3|code assistant tool usage",
+    "search_issues|1|github copilot workflow examples",
+    "search_issues|6|debugging workflow with tools",
+    "search_issues|9|deployment pipeline tutorial"
+  ]
+}

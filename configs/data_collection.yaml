@@ -1,0 +1,56 @@
+api_keys:
+  groq_signup: https://console.groq.com/
+  huggingface_signup: https://huggingface.co/settings/tokens
+  note: 'Set these as environment variables: GROQ_API_KEY, TOGETHER_API_KEY, HUGGINGFACE_API_KEY'
+  together_signup: https://api.together.xyz/
+data_collection:
+  checkpoint_interval: 100
+  enable_deduplication: true
+  log_level: INFO
+  max_concurrent_requests: 10
+  output_dir: data/collected
+  quality_threshold: 0.5
+  rate_limit_per_second: 2.0
+  retry_attempts: 3
+  retry_delay: 1.0
+  timeout_seconds: 30
+huggingface_datasets:
+  default_datasets:
+  - toolbench
+  - qwen_agent
+  - react
+  - hotpotqa
+  max_items_per_dataset: 1000
+synthetic_generation:
+  api_providers:
+    groq:
+      free_tier_info: Free tier available with rate limits
+      model_name: llama3-8b-8192
+      rate_limit: 30.0
+    huggingface:
+      free_tier_info: Free tier with usage limits
+      model_name: microsoft/DialoGPT-medium
+      rate_limit: 10.0
+    together:
+      free_tier_info: $1 free credit for new users
+      model_name: meta-llama/Llama-3-8b-chat-hf
+      rate_limit: 60.0
+  default_scenarios:
+  - tool_usage
+  - multi_step_reasoning
+  - error_handling
+  - code_debugging
+  - data_analysis
+  - api_integration
+  max_items_per_scenario: 100
+  max_turns_per_conversation: 6
+  preferred_provider: groq
+  require_reasoning: true
+  require_tool_usage: true
+  temperature: 0.8
+web_scraping:
+  github_repos:
+  - microsoft/semantic-kernel
+  - langchain-ai/langchain
+  - openai/swarm
+  rate_limit_github: 1.0

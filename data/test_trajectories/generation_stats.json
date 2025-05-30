@@ -1,9 +1,9 @@
 {
   "total_generated": 2,
-  "successful": 2,
-  "failed": 0,
-  "total_tokens": 4536,
-  "total_time": 14.22140121459961,
-  "avg_steps_per_trajectory": 1.0,
-  "success_rate": 1.0
+  "successful": 0,
+  "failed": 2,
+  "total_tokens": 0,
+  "total_time": 16.388233184814453,
+  "avg_steps_per_trajectory": 0.0,
+  "success_rate": 0.0
 }

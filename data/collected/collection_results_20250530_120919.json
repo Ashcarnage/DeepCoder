@@ -1,0 +1,32 @@
+{
+  "start_time": "2025-05-30T12:09:19.460079",
+  "config": "CollectionConfig(output_dir='data/collected', max_concurrent_requests=10, rate_limit_per_second=2.0, retry_attempts=3, retry_delay=1.0, timeout_seconds=30, checkpoint_interval=100, quality_threshold=0.5, enable_deduplication=True, log_level='INFO')",
+  "sources": [
+    "synthetic"
+  ],
+  "results": {
+    "synthetic": {
+      "source": "synthetic",
+      "metrics": "CollectionMetrics(total_requested=100, total_collected=12, total_filtered=38, total_duplicates=0, total_errors=50, start_time=datetime.datetime(2025, 5, 30, 11, 50, 22, 452134), last_checkpoint=datetime.datetime(2025, 5, 30, 12, 9, 19, 514474))",
+      "provider": "groq",
+      "model": "llama3-8b-8192",
+      "scenario_types": [
+        "tool_usage",
+        "multi_step_reasoning",
+        "error_handling",
+        "code_debugging"
+      ],
+      "output_directory": "data/collected/synthetic"
+    }
+  },
+  "end_time": "2025-05-30T12:09:19.526244",
+  "summary": {
+    "total_sources": 1,
+    "successful_sources": 1,
+    "failed_sources": 0,
+    "total_items_collected": 12,
+    "sources_status": {
+      "synthetic": "success"
+    }
+  }
+}

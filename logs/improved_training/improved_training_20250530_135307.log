@@ -1,0 +1,162 @@
+2025-05-30 13:53:07,741 - ImprovedTrainer - INFO - Loading student model: Qwen/Qwen2.5-1.5B-Instruct
+2025-05-30 13:53:09,405 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-05-30 13:53:10,653 - ImprovedTrainer - INFO - Student model loaded with LoRA
+2025-05-30 13:53:10,680 - ImprovedTrainer - INFO - Data setup complete: 15 samples
+2025-05-30 13:53:10,683 - ImprovedTrainer - INFO - Optimizer setup with lr=0.0005
+2025-05-30 13:53:10,683 - ImprovedTrainer - INFO - Improved trainer initialized on cuda
+2025-05-30 13:53:10,684 - ImprovedTrainer - INFO - Student: Qwen/Qwen2.5-1.5B-Instruct
+2025-05-30 13:53:10,685 - ImprovedTrainer - INFO - Teacher: deepseek-r1-distill-qwen-32b
+2025-05-30 13:53:10,685 - ImprovedTrainer - INFO - 🚀 Starting Improved Agentic Training!
+2025-05-30 13:53:10,686 - ImprovedTrainer - INFO - ======================================================================
+2025-05-30 13:53:10,686 - ImprovedTrainer - INFO - 
+🔍 BEFORE TRAINING - Student Model Capabilities:
+2025-05-30 13:53:10,687 - ImprovedTrainer - INFO - ==================================================
+2025-05-30 13:53:10,687 - ImprovedTrainer - INFO - Testing reasoning_task...
+2025-05-30 13:53:18,041 - ImprovedTrainer - INFO - Testing coding_task...
+2025-05-30 13:53:24,873 - ImprovedTrainer - INFO - Testing tool_use_task...
+2025-05-30 13:53:31,558 - ImprovedTrainer - INFO - 
+📝 REASONING_TASK:
+2025-05-30 13:53:31,558 - ImprovedTrainer - INFO - Prompt: Solve this step by step: If I have 15 apples and give away 1/3, then buy 8 more, how many do I have? Show your reasoning.
+2025-05-30 13:53:31,559 - ImprovedTrainer - INFO - Response: To solve the problem of determining how many apples you have after giving some away and buying more, let's break it down step by step:
+
+1. **Start with the initial number of apples**: You begin with 1...
+2025-05-30 13:53:31,559 - ImprovedTrainer - INFO - 
+📝 CODING_TASK:
+2025-05-30 13:53:31,560 - ImprovedTrainer - INFO - Prompt: Write a Python function to find the factorial of a number. Explain your approach.
+2025-05-30 13:53:31,560 - ImprovedTrainer - INFO - Response: To calculate the factorial of a given number, we can use an iterative approach rather than using recursion. The factorial of a non-negative integer n is the product of all positive integers less than ...
+2025-05-30 13:53:31,561 - ImprovedTrainer - INFO - 
+📝 TOOL_USE_TASK:
+2025-05-30 13:53:31,561 - ImprovedTrainer - INFO - Prompt: I need to analyze some data. What tools and steps would you recommend for data preprocessing?
+2025-05-30 13:53:31,562 - ImprovedTrainer - INFO - Response: As an AI language model, I don't have access to your specific dataset or the context of your analysis, but here are some general recommendations for data preprocessing:
+
+1. Cleaning: Remove any missin...
+2025-05-30 13:53:31,562 - ImprovedTrainer - INFO - 
+🎯 TRAINING PHASE:
+2025-05-30 13:53:31,563 - ImprovedTrainer - INFO - ==============================
+2025-05-30 13:53:31,789 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:31,790 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:32,051 - ImprovedTrainer - INFO - Step 1/30 | Loss: 9.7422 | Dist: 12.0234 | Agentic: 0.7061 | Time: 0.5s
+2025-05-30 13:53:32,167 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:32,167 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:32,319 - ImprovedTrainer - INFO - Step 2/30 | Loss: 13.1094 | Dist: 16.2344 | Agentic: 0.7061 | Time: 0.8s
+2025-05-30 13:53:32,432 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:32,433 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:32,580 - ImprovedTrainer - INFO - Step 3/30 | Loss: 11.8984 | Dist: 14.7109 | Agentic: 0.7061 | Time: 1.0s
+2025-05-30 13:53:32,704 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:32,710 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:32,853 - ImprovedTrainer - INFO - Step 4/30 | Loss: 10.0391 | Dist: 12.4062 | Agentic: 0.7061 | Time: 1.3s
+2025-05-30 13:53:32,971 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:32,973 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:33,129 - ImprovedTrainer - INFO - Step 5/30 | Loss: 8.8203 | Dist: 10.8906 | Agentic: 0.7061 | Time: 1.6s
+2025-05-30 13:53:33,251 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:33,253 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:33,404 - ImprovedTrainer - INFO - Step 6/30 | Loss: 8.3281 | Dist: 10.2656 | Agentic: 0.7061 | Time: 1.8s
+2025-05-30 13:53:33,532 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:33,533 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:33,692 - ImprovedTrainer - INFO - Step 7/30 | Loss: 7.7695 | Dist: 9.5625 | Agentic: 0.7061 | Time: 2.1s
+2025-05-30 13:53:33,818 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:33,820 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:33,977 - ImprovedTrainer - INFO - Step 8/30 | Loss: 8.4766 | Dist: 10.4531 | Agentic: 0.7061 | Time: 2.4s
+2025-05-30 13:53:34,102 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:34,109 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:34,265 - ImprovedTrainer - INFO - Step 9/30 | Loss: 8.1094 | Dist: 9.9922 | Agentic: 0.7061 | Time: 2.7s
+2025-05-30 13:53:34,377 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:34,378 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:34,530 - ImprovedTrainer - INFO - Step 10/30 | Loss: 5.9453 | Dist: 7.2930 | Agentic: 0.7061 | Time: 3.0s
+2025-05-30 13:53:36,106 - ImprovedTrainer - INFO - Comprehensive training plot saved: plots/training/improved_training_step_10.png
+2025-05-30 13:53:36,229 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:36,230 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:36,396 - ImprovedTrainer - INFO - Step 11/30 | Loss: 6.8945 | Dist: 8.4688 | Agentic: 0.7061 | Time: 4.8s
+2025-05-30 13:53:36,511 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:36,512 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:36,661 - ImprovedTrainer - INFO - Step 12/30 | Loss: 4.9258 | Dist: 6.0000 | Agentic: 0.7061 | Time: 5.1s
+2025-05-30 13:53:36,781 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:36,781 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:36,931 - ImprovedTrainer - INFO - Step 13/30 | Loss: 4.8125 | Dist: 5.8594 | Agentic: 0.7061 | Time: 5.4s
+2025-05-30 13:53:37,059 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:37,060 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:37,203 - ImprovedTrainer - INFO - Step 14/30 | Loss: 4.4453 | Dist: 5.4062 | Agentic: 0.7061 | Time: 5.6s
+2025-05-30 13:53:37,341 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:37,346 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:37,510 - ImprovedTrainer - INFO - Step 15/30 | Loss: 3.6406 | Dist: 4.4062 | Agentic: 0.7061 | Time: 5.9s
+2025-05-30 13:53:37,634 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:37,635 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:37,790 - ImprovedTrainer - INFO - Step 16/30 | Loss: 3.4434 | Dist: 4.1523 | Agentic: 0.7061 | Time: 6.2s
+2025-05-30 13:53:37,916 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:37,917 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:38,062 - ImprovedTrainer - INFO - Step 17/30 | Loss: 3.2090 | Dist: 3.8730 | Agentic: 0.7061 | Time: 6.5s
+2025-05-30 13:53:38,178 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:38,183 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:38,337 - ImprovedTrainer - INFO - Step 18/30 | Loss: 3.0488 | Dist: 3.6543 | Agentic: 0.7061 | Time: 6.8s
+2025-05-30 13:53:38,458 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:38,459 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:38,613 - ImprovedTrainer - INFO - Step 19/30 | Loss: 2.8691 | Dist: 3.4434 | Agentic: 0.7061 | Time: 7.0s
+2025-05-30 13:53:38,818 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:38,819 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:38,972 - ImprovedTrainer - INFO - Step 20/30 | Loss: 2.7734 | Dist: 3.3164 | Agentic: 0.7061 | Time: 7.4s
+2025-05-30 13:53:40,458 - ImprovedTrainer - INFO - Comprehensive training plot saved: plots/training/improved_training_step_20.png
+2025-05-30 13:53:40,597 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:40,598 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:40,755 - ImprovedTrainer - INFO - Step 21/30 | Loss: 2.6641 | Dist: 3.1914 | Agentic: 0.7061 | Time: 9.2s
+2025-05-30 13:53:40,886 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:40,887 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:41,037 - ImprovedTrainer - INFO - Step 22/30 | Loss: 2.6445 | Dist: 3.1504 | Agentic: 0.7061 | Time: 9.5s
+2025-05-30 13:53:41,160 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:41,161 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:41,309 - ImprovedTrainer - INFO - Step 23/30 | Loss: 2.4570 | Dist: 2.9316 | Agentic: 0.7061 | Time: 9.7s
+2025-05-30 13:53:41,433 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:41,434 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:41,594 - ImprovedTrainer - INFO - Step 24/30 | Loss: 2.4570 | Dist: 2.9141 | Agentic: 0.7061 | Time: 10.0s
+2025-05-30 13:53:41,744 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:41,749 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:41,904 - ImprovedTrainer - INFO - Step 25/30 | Loss: 2.4199 | Dist: 2.8691 | Agentic: 0.7061 | Time: 10.3s
+2025-05-30 13:53:42,033 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:42,034 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:42,177 - ImprovedTrainer - INFO - Step 26/30 | Loss: 2.3184 | Dist: 2.7539 | Agentic: 0.7061 | Time: 10.6s
+2025-05-30 13:53:42,290 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:42,294 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:42,467 - ImprovedTrainer - INFO - Step 27/30 | Loss: 2.2656 | Dist: 2.6816 | Agentic: 0.7061 | Time: 10.9s
+2025-05-30 13:53:42,602 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:42,609 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:42,761 - ImprovedTrainer - INFO - Step 28/30 | Loss: 2.1250 | Dist: 2.5117 | Agentic: 0.7061 | Time: 11.2s
+2025-05-30 13:53:42,885 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:42,886 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:43,046 - ImprovedTrainer - INFO - Step 29/30 | Loss: 2.2734 | Dist: 2.7031 | Agentic: 0.7061 | Time: 11.5s
+2025-05-30 13:53:43,176 - httpx - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-05-30 13:53:43,177 - ImprovedTrainer - WARNING - Teacher model error: Error code: 400 - {'error': {'message': 'The model `deepseek-r1-distill-qwen-32b` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.', 'type': 'invalid_request_error', 'code': 'model_decommissioned'}}
+2025-05-30 13:53:43,326 - ImprovedTrainer - INFO - Step 30/30 | Loss: 2.0605 | Dist: 2.4199 | Agentic: 0.7061 | Time: 11.8s
+2025-05-30 13:53:45,150 - ImprovedTrainer - INFO - Comprehensive training plot saved: plots/training/improved_training_step_30.png
+2025-05-30 13:53:45,151 - ImprovedTrainer - INFO - 
+🎉 AFTER TRAINING - Student Model Capabilities:
+2025-05-30 13:53:45,151 - ImprovedTrainer - INFO - ==================================================
+2025-05-30 13:53:45,152 - ImprovedTrainer - INFO - Testing reasoning_task...
+2025-05-30 13:53:51,905 - ImprovedTrainer - INFO - Testing coding_task...
+2025-05-30 13:53:58,669 - ImprovedTrainer - INFO - Testing tool_use_task...
+2025-05-30 13:54:05,100 - ImprovedTrainer - INFO - 
+📊 BEFORE vs AFTER COMPARISON:
+2025-05-30 13:54:05,109 - ImprovedTrainer - INFO - ========================================
+2025-05-30 13:54:05,110 - ImprovedTrainer - INFO - 
+🔄 REASONING_TASK:
+2025-05-30 13:54:05,111 - ImprovedTrainer - INFO - BEFORE: To solve the problem of determining how many apples you have after giving some away and buying more, let's break it down step by step:
+
+1. **Start wit...
+2025-05-30 13:54:05,111 - ImprovedTrainer - INFO - AFTER:  parts each systematically one carefully smaller down into it'll solve it Then and systematically to. It. need it, I this break systematically this and...
+2025-05-30 13:54:05,112 - ImprovedTrainer - INFO - 
+🔄 CODING_TASK:
+2025-05-30 13:54:05,113 - ImprovedTrainer - INFO - BEFORE: To calculate the factorial of a given number, we can use an iterative approach rather than using recursion. The factorial of a non-negative integer n ...
+2025-05-30 13:54:05,113 - ImprovedTrainer - INFO - AFTER:  I smaller each one systematically and break down this parts it, solve Then into I'll. carefully, need and it and then smaller systematically and I..'l...
+2025-05-30 13:54:05,114 - ImprovedTrainer - INFO - 
+🔄 TOOL_USE_TASK:
+2025-05-30 13:54:05,115 - ImprovedTrainer - INFO - BEFORE: As an AI language model, I don't have access to your specific dataset or the context of your analysis, but here are some general recommendations for d...
+2025-05-30 13:54:05,116 - ImprovedTrainer - INFO - AFTER:  systematically this I'll it into,. solve smaller each and systematically Then carefully. systematically systematically parts it. systematically one sy...
+2025-05-30 13:54:05,117 - ImprovedTrainer - INFO - 
+🎉 Training Complete!
+2025-05-30 13:54:05,117 - ImprovedTrainer - INFO - ==================================================
+2025-05-30 13:54:05,118 - ImprovedTrainer - INFO - 📊 Final Results:
+2025-05-30 13:54:05,118 - ImprovedTrainer - INFO -    • Total steps: 30
+2025-05-30 13:54:05,119 - ImprovedTrainer - INFO -    • Training time: 33.6s
+2025-05-30 13:54:05,119 - ImprovedTrainer - INFO -    • Initial loss: 9.7422
+2025-05-30 13:54:05,120 - ImprovedTrainer - INFO -    • Final loss: 2.0605
+2025-05-30 13:54:05,121 - ImprovedTrainer - INFO -    • Loss reduction: 7.6816
+2025-05-30 13:54:05,122 - ImprovedTrainer - INFO -    • Improvement: 78.8%
+2025-05-30 13:54:06,557 - ImprovedTrainer - INFO - Comprehensive training plot saved: plots/training/improved_training_step_30.png

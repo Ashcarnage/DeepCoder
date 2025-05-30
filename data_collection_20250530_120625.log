@@ -1,0 +1,7 @@
+2025-05-30 12:06:25,717 - collector.orchestrator - INFO - Starting data collection pipeline with sources: ['synthetic']
+2025-05-30 12:06:25,718 - collector.orchestrator - INFO - Configuration: CollectionConfig(output_dir='data/collected', max_concurrent_requests=10, rate_limit_per_second=2.0, retry_attempts=3, retry_delay=1.0, timeout_seconds=30, checkpoint_interval=100, quality_threshold=0.5, enable_deduplication=True, log_level='INFO')
+2025-05-30 12:06:25,718 - collector.orchestrator - INFO - Running 1 collection tasks...
+2025-05-30 12:06:25,719 - collector.orchestrator - INFO - Starting synthetic data collection...
+2025-05-30 12:06:25,723 - collector.orchestrator - WARNING - No API keys found for synthetic generation. Set GROQ_API_KEY, TOGETHER_API_KEY, or HUGGINGFACE_API_KEY
+2025-05-30 12:06:25,724 - collector.orchestrator - INFO - Completed collection for synthetic
+2025-05-30 12:06:25,733 - collector.orchestrator - INFO - Collection results saved to: data/collected/collection_results_20250530_120625.json

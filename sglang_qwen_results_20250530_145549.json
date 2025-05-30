@@ -1,0 +1,40 @@
+{
+  "timestamp": "2025-05-30T14:55:49.117645",
+  "sglang_config": {
+    "base_url": "http://127.0.0.1:30000/v1",
+    "model_name": "qwen3-30b-a3b",
+    "server_type": "SGLang"
+  },
+  "test_results": [
+    {
+      "error": "argument of type 'NoneType' is not iterable",
+      "prompt": "Solve this step by step: A store has 150 apples. They sell 30% in the morning and 25% of the remaining in the afternoon. How many apples are left?",
+      "category": "Mathematical Reasoning"
+    },
+    {
+      "error": "argument of type 'NoneType' is not iterable",
+      "prompt": "Write a Python function to find the second largest number in a list. Include error handling and explain your approach.",
+      "category": "Coding & Explanation"
+    },
+    {
+      "error": "argument of type 'NoneType' is not iterable",
+      "prompt": "Analyze this scenario: A team is working remotely but productivity has decreased. What could be the causes and what solutions would you recommend?",
+      "category": "Problem Analysis"
+    },
+    {
+      "error": "argument of type 'NoneType' is not iterable",
+      "prompt": "Compare and contrast the advantages of renewable energy sources versus traditional fossil fuels. Provide a balanced perspective.",
+      "category": "Comparative Analysis"
+    },
+    {
+      "error": "argument of type 'NoneType' is not iterable",
+      "prompt": "Plan a learning strategy for someone who wants to become proficient in machine learning within 6 months. Break it down into phases.",
+      "category": "Strategic Planning"
+    }
+  ],
+  "summary": {
+    "total_tests": 5,
+    "successful_tests": 0,
+    "failed_tests": 5
+  }
+}

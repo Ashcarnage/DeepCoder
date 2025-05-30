@@ -1,0 +1,14 @@
+2025-05-30 13:57:43,918 - FinalTrainer - INFO - Loading student model: Qwen/Qwen2.5-1.5B-Instruct
+2025-05-30 13:57:44,835 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+2025-05-30 13:57:45,842 - FinalTrainer - INFO - 🚀 Final Agentic Trainer Initialized!
+2025-05-30 13:57:45,842 - FinalTrainer - INFO - 📖 Student: Qwen/Qwen2.5-1.5B-Instruct
+2025-05-30 13:57:45,843 - FinalTrainer - INFO - 🎓 Teacher: deepseek-r1-distill-llama-70b
+2025-05-30 13:57:45,844 - FinalTrainer - INFO - 🔧 Device: cuda
+2025-05-30 13:57:45,845 - FinalTrainer - INFO - 🚀 STARTING FINAL AGENTIC TRAINING
+2025-05-30 13:57:45,845 - FinalTrainer - INFO - ======================================================================
+2025-05-30 13:57:45,846 - FinalTrainer - INFO - 
+🔍 BEFORE TRAINING - Student Capabilities:
+2025-05-30 13:57:45,847 - FinalTrainer - INFO - ==================================================
+2025-05-30 13:57:45,847 - FinalTrainer - INFO - 🔍 Evaluating reasoning_challenge...
+2025-05-30 13:57:53,863 - FinalTrainer - INFO - 🔍 Evaluating coding_challenge...
+2025-05-30 13:58:01,430 - FinalTrainer - INFO - 🔍 Evaluating tool_use_challenge...

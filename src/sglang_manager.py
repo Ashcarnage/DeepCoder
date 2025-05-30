@@ -102,7 +102,6 @@ class SGLangServer:
         
         # Add boolean flags
         boolean_flags = {
-            'enable_flashinfer': '--enable-flashinfer',
             'trust_remote_code': '--trust-remote-code',
             'disable_regex_jump_forward': '--disable-regex-jump-forward',
             'disable_custom_all_reduce': '--disable-custom-all-reduce'
@@ -111,6 +110,10 @@ class SGLangServer:
         for config_key, cli_flag in boolean_flags.items():
             if self.server_config.get(config_key, False):
                 cmd.append(cli_flag)
+        
+        # Add attention backend (replaces deprecated --enable-flashinfer)
+        if self.server_config.get('enable_flashinfer', False):
+            cmd.extend(['--attention-backend', 'flashinfer'])
         
         # Add chat template if specified
         chat_template = self.server_config.get('chat_template')

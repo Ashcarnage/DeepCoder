@@ -1,0 +1,27 @@
+{
+  "start_time": "2025-05-29T23:24:20.316655",
+  "config": "CollectionConfig(output_dir='data/collected', max_concurrent_requests=10, rate_limit_per_second=2.0, retry_attempts=3, retry_delay=1.0, timeout_seconds=30, checkpoint_interval=100, quality_threshold=0.5, enable_deduplication=True, log_level='INFO')",
+  "sources": [
+    "huggingface"
+  ],
+  "results": {
+    "huggingface": {
+      "source": "huggingface",
+      "metrics": "CollectionMetrics(total_requested=0, total_collected=0, total_filtered=0, total_duplicates=0, total_errors=0, start_time=None, last_checkpoint=datetime.datetime(2025, 5, 29, 23, 24, 20, 505561))",
+      "datasets_processed": [
+        "toolbench"
+      ],
+      "output_directory": "data/collected/huggingface"
+    }
+  },
+  "end_time": "2025-05-29T23:24:20.506103",
+  "summary": {
+    "total_sources": 1,
+    "successful_sources": 1,
+    "failed_sources": 0,
+    "total_items_collected": 0,
+    "sources_status": {
+      "huggingface": "success"
+    }
+  }
+}

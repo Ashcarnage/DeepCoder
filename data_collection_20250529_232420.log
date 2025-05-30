@@ -1,0 +1,12 @@
+2025-05-29 23:24:20,316 - collector.orchestrator - INFO - Starting data collection pipeline with sources: ['huggingface']
+2025-05-29 23:24:20,316 - collector.orchestrator - INFO - Configuration: CollectionConfig(output_dir='data/collected', max_concurrent_requests=10, rate_limit_per_second=2.0, retry_attempts=3, retry_delay=1.0, timeout_seconds=30, checkpoint_interval=100, quality_threshold=0.5, enable_deduplication=True, log_level='INFO')
+2025-05-29 23:24:20,316 - collector.orchestrator - INFO - Running 1 collection tasks...
+2025-05-29 23:24:20,316 - collector.orchestrator - INFO - Starting HuggingFace data collection...
+2025-05-29 23:24:20,317 - collector.huggingface - INFO - Starting collection for huggingface
+2025-05-29 23:24:20,317 - collector.huggingface - INFO - Loading dataset toolbench: ShishirPatil/gorilla-openfunctions-v1
+2025-05-29 23:24:20,501 - collector.huggingface - ERROR - Failed to load dataset toolbench: Dataset 'ShishirPatil/gorilla-openfunctions-v1' doesn't exist on the Hub or cannot be accessed.
+2025-05-29 23:24:20,501 - collector.huggingface - INFO - Generated 0 item IDs from 1 datasets
+2025-05-29 23:24:20,504 - collector.huggingface - INFO - Collection complete: 0 items collected
+2025-05-29 23:24:20,506 - collector.orchestrator - INFO - HuggingFace collection completed: 0 items
+2025-05-29 23:24:20,506 - collector.orchestrator - INFO - Completed collection for huggingface
+2025-05-29 23:24:20,506 - collector.orchestrator - INFO - Collection results saved to: data/collected/collection_results_20250529_232420.json

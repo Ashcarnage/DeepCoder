@@ -1,0 +1,24 @@
+{
+  "start_time": "2025-05-29T23:49:03.306590",
+  "config": "CollectionConfig(output_dir='data/collected', max_concurrent_requests=10, rate_limit_per_second=2.0, retry_attempts=3, retry_delay=1.0, timeout_seconds=30, checkpoint_interval=100, quality_threshold=0.5, enable_deduplication=True, log_level='INFO')",
+  "sources": [
+    "synthetic"
+  ],
+  "results": {
+    "synthetic": {
+      "source": "synthetic",
+      "status": "no_api_key",
+      "message": "No API keys available. Please set GROQ_API_KEY, TOGETHER_API_KEY, or HUGGINGFACE_API_KEY environment variable."
+    }
+  },
+  "end_time": "2025-05-29T23:49:03.307598",
+  "summary": {
+    "total_sources": 1,
+    "successful_sources": 1,
+    "failed_sources": 0,
+    "total_items_collected": 0,
+    "sources_status": {
+      "synthetic": "success"
+    }
+  }
+}

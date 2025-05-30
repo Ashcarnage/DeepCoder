@@ -1,0 +1,48 @@
+2025-05-30 12:20:45,812 - collector.github - INFO - Starting collection for github
+2025-05-30 12:20:45,813 - collector.github - INFO - Generated 96 GitHub item IDs
+2025-05-30 12:20:55,197 - collector.github - ERROR - GitHub GraphQL API error 403 for query: multi-step debugging process
+2025-05-30 12:21:04,542 - collector.github - ERROR - GitHub GraphQL API error 403 for query: error handling workflow automation
+2025-05-30 12:21:13,886 - collector.github - ERROR - GitHub GraphQL API error 403 for query: code review automation setup
+2025-05-30 12:21:23,231 - collector.github - ERROR - GitHub GraphQL API error 403 for query: cursor AI assistant workflow
+2025-05-30 12:21:27,904 - collector.github - ERROR - GitHub GraphQL API error 403 for query: deployment pipeline automation
+2025-05-30 12:21:37,251 - collector.github - ERROR - GitHub GraphQL API error 403 for query: github copilot integration tutorial
+2025-05-30 12:21:41,925 - collector.github - ERROR - GitHub GraphQL API error 403 for query: monitoring setup tutorial
+2025-05-30 12:21:46,963 - collector.github - ERROR - Error fetching GitHub item repo_issues|11|nodejs/node: unsupported operand type(s) for +: 'NoneType' and 'str'
+2025-05-30 12:21:51,269 - collector.github - ERROR - GitHub GraphQL API error 403 for query: AI pair programming setup
+2025-05-30 12:21:55,943 - collector.github - ERROR - GitHub GraphQL API error 403 for query: performance optimization workflow
+2025-05-30 12:22:05,288 - collector.github - ERROR - GitHub GraphQL API error 403 for query: code assistant configuration
+2025-05-30 12:22:09,963 - collector.github - ERROR - GitHub GraphQL API error 403 for query: VSCode extension development tutorial
+2025-05-30 12:22:12,855 - collector.github - ERROR - Error fetching GitHub item search_issues|4|automated coding workflow setup: unsupported operand type(s) for +: 'NoneType' and 'str'
+2025-05-30 12:22:19,550 - collector.github - ERROR - GitHub GraphQL API error 403 for query: automated coding workflow setup
+2025-05-30 12:22:23,980 - collector.github - ERROR - GitHub GraphQL API error 403 for query: development tools integration
+2025-05-30 12:22:33,326 - collector.github - ERROR - GitHub GraphQL API error 403 for query: AI code completion integration
+2025-05-30 12:22:37,999 - collector.github - ERROR - GitHub GraphQL API error 403 for query: command line automation tutorial
+2025-05-30 12:22:47,342 - collector.github - ERROR - GitHub GraphQL API error 403 for query: intelligent code suggestions setup
+2025-05-30 12:22:52,014 - collector.github - ERROR - GitHub GraphQL API error 403 for query: script automation workflow
+2025-05-30 12:22:54,965 - collector.github - ERROR - Error fetching GitHub item search_issues|7|API integration step by step tutorial: unsupported operand type(s) for +: 'NoneType' and 'str'
+2025-05-30 12:22:57,013 - collector.github - ERROR - Error fetching GitHub item repo_issues|16|jenkins-x/jx: unsupported operand type(s) for +: 'NoneType' and 'str'
+2025-05-30 12:23:01,357 - collector.github - ERROR - GitHub GraphQL API error 403 for query: API integration step by step tutorial
+2025-05-30 12:23:06,278 - collector.github - ERROR - GitHub GraphQL API error 403 for query: build system configuration
+2025-05-30 12:23:15,373 - collector.github - ERROR - GitHub GraphQL API error 403 for query: debugging workflow with tools guide
+2025-05-30 12:23:29,390 - collector.github - ERROR - GitHub GraphQL API error 403 for query: automated testing setup tutorial
+2025-05-30 12:23:41,189 - collector.github - ERROR - GitHub API error 404 for repo: cursor-ai/cursor
+2025-05-30 12:23:43,409 - collector.github - ERROR - GitHub GraphQL API error 403 for query: CI/CD pipeline configuration
+2025-05-30 12:23:45,745 - collector.github - ERROR - GitHub API error 403 for repo pulls: pytorch/pytorch
+2025-05-30 12:23:48,082 - collector.github - ERROR - GitHub API error 403 for repo pulls: cursor-ai/cursor
+2025-05-30 12:23:52,756 - collector.github - ERROR - GitHub API error 403 for repo: huggingface/transformers
+2025-05-30 12:23:55,094 - collector.github - ERROR - GitHub API error 403 for repo: sourcegraph/sourcegraph
+2025-05-30 12:23:57,431 - collector.github - ERROR - GitHub GraphQL API error 403 for query: development environment setup
+2025-05-30 12:23:59,769 - collector.github - ERROR - GitHub API error 403 for repo pulls: huggingface/transformers
+2025-05-30 12:24:02,106 - collector.github - ERROR - GitHub API error 403 for repo pulls: sourcegraph/sourcegraph
+2025-05-30 12:24:04,881 - collector.github - ERROR - Error fetching GitHub item search_issues|12|IDE integration tutorial: unsupported operand type(s) for +: 'NoneType' and 'str'
+2025-05-30 12:24:06,780 - collector.github - ERROR - GitHub API error 403 for repo: openai/gpt-4
+2025-05-30 12:24:09,117 - collector.github - ERROR - GitHub API error 403 for repo: tabnine/tabnine-vscode
+2025-05-30 12:24:11,454 - collector.github - ERROR - GitHub GraphQL API error 403 for query: IDE integration tutorial
+2025-05-30 12:24:13,790 - collector.github - ERROR - GitHub API error 403 for repo pulls: openai/gpt-4
+2025-05-30 12:24:16,125 - collector.github - ERROR - GitHub API error 403 for repo pulls: tabnine/tabnine-vscode
+2025-05-30 12:24:20,799 - collector.github - ERROR - GitHub API error 403 for repo: anthropic/claude-api
+2025-05-30 12:24:23,136 - collector.github - ERROR - GitHub API error 403 for repo: codeium/codeium
+2025-05-30 12:24:25,474 - collector.github - ERROR - GitHub GraphQL API error 403 for query: linter configuration guide
+2025-05-30 12:24:27,810 - collector.github - ERROR - GitHub API error 403 for repo pulls: anthropic/claude-api
+2025-05-30 12:24:30,146 - collector.github - ERROR - GitHub API error 403 for repo pulls: codeium/codeium
+2025-05-30 12:24:30,177 - collector.github - INFO - Collection complete: 15 items collected

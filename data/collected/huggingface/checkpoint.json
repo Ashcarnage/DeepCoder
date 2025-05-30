@@ -1,0 +1,12 @@
+{
+  "metrics": {
+    "total_requested": 0,
+    "total_collected": 0,
+    "total_filtered": 0,
+    "total_duplicates": 0,
+    "total_errors": 0,
+    "start_time": null,
+    "last_checkpoint": "2025-05-29T23:24:20.504181"
+  },
+  "processed_ids": []
+}
