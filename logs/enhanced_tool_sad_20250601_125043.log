@@ -1,0 +1,4 @@
+2025-06-01 12:50:43,856 - __main__ - INFO - Enhanced Tool-Aware SAD Trainer initialized
+2025-06-01 12:50:43,856 - __main__ - INFO - 🚀 Starting Enhanced Tool-Aware SAD Training Pipeline
+2025-06-01 12:50:43,856 - __main__ - INFO - Loading Qwen 30B student model...
+2025-06-01 12:50:45,919 - accelerate.utils.modeling - INFO - We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).

@@ -1,0 +1,7 @@
+2025-06-01 12:54:58,872 - __main__ - INFO - SGLang API-based SAD Trainer initialized
+2025-06-01 12:54:58,872 - __main__ - INFO - 🚀 Starting SGLang API-based SAD Training Pipeline
+2025-06-01 12:54:59,004 - httpx - INFO - HTTP Request: GET http://localhost:30000/v1/models "HTTP/1.1 200 OK"
+2025-06-01 12:54:59,005 - __main__ - INFO - ✅ SGLang server connected. Available models: ['qwen3-30b-a3b']
+2025-06-01 12:54:59,473 - httpx - INFO - HTTP Request: POST http://localhost:30000/v1/chat/completions "HTTP/1.1 200 OK"
+2025-06-01 12:54:59,475 - __main__ - ERROR - ❌ SGLang connection failed: 'NoneType' object is not subscriptable
+2025-06-01 12:54:59,475 - __main__ - ERROR - ❌ Training pipeline failed: Cannot connect to SGLang server
